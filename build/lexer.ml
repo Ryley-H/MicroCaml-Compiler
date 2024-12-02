@@ -1,7 +1,7 @@
 open Types
 open Str
 
-(* Part 1: Lexer - IMPLEMENT YOUR CODE BELOW *)
+(* Lexer - Converts an input string of MicroCaml into a list of tokens *)
 
 let tokenize input = 
   let length = String.length input in
