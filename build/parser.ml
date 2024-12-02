@@ -1,8 +1,6 @@
 open Types
 open Utils
 
-(* Provided functions - DO NOT MODIFY *)
-
 (* Matches the next token in the list, throwing an error if it doesn't match the given token *)
 let match_token (toks : token list) (tok : token) =
   match toks with
@@ -31,8 +29,8 @@ let rec lookahead_many (toks : token list) (n : int) =
   | _ :: t, n when n > 0 -> lookahead_many t (n - 1)
   | _ -> None
 
-(* Part 2: Parsing expressions *)
-
+(* Parsing - Takes a list of tokens and returns an AST representing the MicroCaml expression corresponding to the given 
+tokens, along with any tokens left in the token list. *)
 let rec parse_expr toks = parse_lets toks
 
 and parse_lets toks = match lookahead toks with
