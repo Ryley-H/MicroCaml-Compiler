@@ -95,10 +95,6 @@ and string_of_mutop (m : mutop) : string =
   | Expr e -> "Expr(" ^ string_of_expr e ^ ")"
   | NoOp -> "NoOp"
 
-(**********************************
- * BEGIN ACTUAL PARSE HELPER CODE *
- **********************************)
-
 let string_of_in_channel (ic : in_channel) : string =
   let lines : string list =
     let try_read () =
