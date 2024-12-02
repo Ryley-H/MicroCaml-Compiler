@@ -1,7 +1,5 @@
 open Types
 
-(* Provided functions - DO NOT MODIFY *)
-
 (* Adds mapping [x:v] to environment [env] *)
 let extend env x v = (x, ref v) :: env
 
@@ -21,8 +19,6 @@ let rec update env x v =
   match env with
   | [] -> raise (DeclareError ("Unbound variable " ^ x))
   | (var, value) :: t -> if x = var then value := v else update t x v
-
-(* Part 1: Evaluating expressions *)
 
 (* Evaluates MicroCaml expression [e] in environment [env],
    returning an expression, or throwing an exception on error *)
@@ -97,9 +93,6 @@ let rec eval_expr env e = match e with
   | App (func_expr, arg_expr) -> let func_val = eval_expr env func_expr in let arg_val = eval_expr env arg_expr in (match func_val with
     | Closure (closure_env, param, body) -> let new_env = extend closure_env param arg_val in eval_expr new_env body
     | _ -> raise (TypeError "Error"))
-
-
-(* Part 2: Evaluating mutop directive *)
 
 (* Evaluates MicroCaml mutop directive [m] in environment [env],
    returning a possibly updated environment paired with
