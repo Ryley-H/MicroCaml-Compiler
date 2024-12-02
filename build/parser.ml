@@ -155,8 +155,8 @@ and parse_id toks = match lookahead toks with
   | Some (Tok_ID id) -> (match_token toks (Tok_ID id), id)
   | _ -> raise (InvalidInputException "Invalid Input")
 
-(* Part 3: Parsing mutop *)
-
+(* Parsing mutop - Takes a list of tokens and returns an AST representing the MicroCaml expression at the mutop level corresponding to the given tokens, along with any tokens left
+in the token list.*)
 let rec parse_mutop toks = match lookahead toks with
   | Some Tok_Def -> let toks = match_token toks Tok_Def in
     let toks, id = parse_id toks in
